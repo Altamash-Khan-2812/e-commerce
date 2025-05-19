@@ -1,5 +1,11 @@
+import Main from "./Components/Main/Main";
+
 const App = () => {
-  return <h1 className="bg-red-00 text-red-950">Hello ayan</h1>;
+  return (
+    <div className="App">
+      <Main />
+    </div>
+  );
 };
 
 export default App;
