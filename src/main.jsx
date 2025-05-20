@@ -5,12 +5,15 @@ import App from "./App.jsx";
 import { Provider } from "react-redux";
 import { store } from "./app/store.js";
 import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider } from "@material-tailwind/react";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
       </BrowserRouter>
     </Provider>
   </StrictMode>

@@ -4,7 +4,8 @@ import { storeData } from "../../assets/data/dummyData";
 export const productSlice = createSlice({
   name: "products",
   initialState: {
-    filteredProducts: JSON.parse(sessionStorage.getItem("filteredData")) || storeData
+    filteredProducts:
+      JSON.parse(sessionStorage.getItem("filteredData")) || storeData,
   },
 
   reducers: {
@@ -16,7 +17,7 @@ export const productSlice = createSlice({
 
         state.filteredProducts = filter;
         const saveState = JSON.stringify(filter);
-        sessionStorage.setItem("filteredData", saveState)
+        sessionStorage.setItem("filteredData", saveState);
       } catch (error) {
         return error;
       }
