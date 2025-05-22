@@ -39,7 +39,7 @@ const NavigateButtons = () => {
         })}
       </div>
       <div className="bg-green-600 p-2 w-[55%] mx-auto rounded-md">
-        <h3 className="text-orange-900 text-center text-lg font-[inter] font-bold tracking-normal leading-none">
+        <h3 className="text-red-600 text-center text-lg font-[inter] font-bold tracking-normal leading-none">
           SALES UPTO 50%
         </h3>
       </div>

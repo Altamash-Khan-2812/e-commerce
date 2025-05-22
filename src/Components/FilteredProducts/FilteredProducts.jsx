@@ -5,7 +5,6 @@ import ProductCard from "./ProductCard";
 const FilteredProducts = () => {
   const products = useSelector((state) => state.products.filteredProducts);
   const { type } = useParams();
-  console.log(products);
 
   return (
     <div>
