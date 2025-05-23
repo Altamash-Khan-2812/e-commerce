@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { Tooltip, Button } from "@material-tailwind/react";
+import { useDispatch, useSelector } from "react-redux";
+import { Tooltip } from "@material-tailwind/react";
+import { addToCart } from "../../features/slices/CartSlice";
 
 const SingleProduct = () => {
   const product = useSelector((state) => state.products.singleProduct);
@@ -8,6 +9,7 @@ const SingleProduct = () => {
   const productColor = product[0] ? product[0].color[0] : "";
   const [size, setSize] = useState(productSize);
   const [color, setColor] = useState(productColor);
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -21,6 +23,7 @@ const SingleProduct = () => {
                 className="h-[850px] rounded-lg"
               />
             </div>
+
             <div className="grow-[3]">
               <div className="max-w-lg">
                 <h5 className="text-2xl font-[inter] font-bold tracking-normal leading-none pb-4">
@@ -84,8 +87,29 @@ const SingleProduct = () => {
                     })}
                   </select>
                 </div>
-                <Tooltip content="Add to Cart" placement="bottom" className="p-2">
-                  <button  className="border rounded-sm px-5 py-2 bg-gray-100 text-gray-600 cursor-pointer">Add to Cart</button>
+                <Tooltip
+                  content="Add to Cart"
+                  placement="bottom"
+                  className="p-2"
+                >
+                  <button
+                    className="border rounded-sm px-5 py-2 bg-gray-100 text-gray-600 cursor-pointer"
+                    onClick={() =>
+                      dispatch(
+                        addToCart({
+                          id: item.id,
+                          name: item.name,
+                          size: size,
+                          color: color,
+                          price: item.price,
+                          amount: 1,
+                          totalPrice: item.price,
+                        })
+                      )
+                    }
+                  >
+                    Add to Cart
+                  </button>
                 </Tooltip>
               </div>
             </div>

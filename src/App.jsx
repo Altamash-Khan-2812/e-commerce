@@ -12,7 +12,10 @@ const App = () => {
           element={<FilteredProducts />}
           path="/filteredProducts/:type"
         ></Route>
-        <Route element={<SingleProduct />} path="/filteredProducts/:type/:id"></Route>
+        <Route
+          element={<SingleProduct />}
+          path="/filteredProducts/:type/:id"
+        ></Route>
       </Routes>
     </div>
   );
