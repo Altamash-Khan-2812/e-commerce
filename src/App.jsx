@@ -4,6 +4,7 @@ import FilteredProducts from "./Components/FilteredProducts/FilteredProducts";
 import SingleProduct from "./Components/FilteredProducts/SingleProduct";
 
 const App = () => {
+  
   return (
     <div className="App">
       <Routes>

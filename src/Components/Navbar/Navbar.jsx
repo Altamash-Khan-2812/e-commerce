@@ -3,8 +3,11 @@ import logo from "../../assets/images/logo.png";
 import { CiHeart } from "react-icons/ci";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import Cart from "../Cart/Cart";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const totalAmount = useSelector(state => state.cart.totalAmount);
+  
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -35,7 +38,9 @@ const Navbar = () => {
             className="flex flex-row items-center cursor-pointer gap-0.5"
             onClick={handleOpen}
           >
-            <MdOutlineShoppingBag className="w-6 h-6" />
+          {totalAmount > 0 ? <span className="rounded-full bg-gray-300 px-2 font-[inter] text-sm mr-1">{totalAmount}</span> : <MdOutlineShoppingBag className="w-6 h-6" />}
+          
+            
             <p className=" font-[inter] text-base font-medium tracking-normal leading-none text-center mr-2">
               Shopping Bag
             </p>

@@ -93,12 +93,14 @@ const SingleProduct = () => {
                   className="p-2"
                 >
                   <button
-                    className="border rounded-sm px-5 py-2 bg-gray-100 text-gray-600 cursor-pointer"
+                    className="border rounded-sm px-5 py-2 bg-gray-100 text-gray-600 cursor-pointer active:border-2"
                     onClick={() =>
                       dispatch(
                         addToCart({
                           id: item.id,
                           name: item.name,
+                          img: item.img,
+                          text: item.text,
                           size: size,
                           color: color,
                           price: item.price,
