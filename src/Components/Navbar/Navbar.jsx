@@ -3,16 +3,23 @@ import logo from "../../assets/images/logo.png";
 import { CiHeart } from "react-icons/ci";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import Cart from "../Cart/Cart";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Avatar } from "@material-tailwind/react";
+import { Tooltip, Button } from "@material-tailwind/react";
+import { logout } from "../../features/slices/authSlice";
 
 const Navbar = () => {
-  const totalAmount = useSelector(state => state.cart.totalAmount);
-  
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
+  const user = useSelector((state) => state.user.user);
+  const { name, image } = user;
+
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
   };
+
+  const dispatch = useDispatch();
   return (
     <>
       <div className="bg-black p-2 w-full">
@@ -38,13 +45,34 @@ const Navbar = () => {
             className="flex flex-row items-center cursor-pointer gap-0.5"
             onClick={handleOpen}
           >
-          {totalAmount > 0 ? <span className="rounded-full bg-gray-300 px-2 font-[inter] text-sm mr-1">{totalAmount}</span> : <MdOutlineShoppingBag className="w-6 h-6" />}
-          
-            
+            {totalAmount > 0 ? (
+              <span className="rounded-full bg-gray-300 px-2 font-[inter] text-sm mr-1">
+                {totalAmount}
+              </span>
+            ) : (
+              <MdOutlineShoppingBag className="w-6 h-6" />
+            )}
+
             <p className=" font-[inter] text-base font-medium tracking-normal leading-none text-center mr-2">
               Shopping Bag
             </p>
             <div>{open && <Cart openModal={open} setOpen={setOpen} />}</div>
+          </div>
+          <div className="flex items-center cursor-pointer pl-4">
+            {image && (
+              <Avatar
+                src={image}
+                alt="avatar"
+                className="mr-2 h-8 w-8 rounded-full"
+              ></Avatar>
+            )}
+            <div onClick={() => dispatch(logout())}>
+              <Tooltip content="Sign Out" placement="bottom" className="p-1">
+                <p className="font-[inter] text-sm font-medium tracking-normal leading-none">
+                  Hi {name.charAt(0).toUpperCase() + name.slice(1)}
+                </p>
+              </Tooltip>
+            </div>
           </div>
         </div>
       </div>
