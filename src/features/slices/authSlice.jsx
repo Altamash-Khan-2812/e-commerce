@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const authSlice = createSlice({
   name: "auth",
   initialState: {
-    user: JSON.parse(sessionStorage.getItem("authUser")) || {
+    user: JSON.parse(localStorage.getItem("authUser")) || {
       name: "",
       password: "",
       image: "",
@@ -25,7 +25,7 @@ export const authSlice = createSlice({
       } else {
         state.user.authUser = true;
         const saveState = JSON.stringify(userId);
-        sessionStorage.setItem("authUser", saveState);
+        localStorage.setItem("authUser", saveState);
       }
     },
     logout(state) {

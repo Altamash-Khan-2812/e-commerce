@@ -17,19 +17,19 @@ const ProductCard = ({ img, id, name, text, price, color }) => {
   return (
     <Link to={`/filteredProducts/${type}/` + id}>
       <Card
-        className="w-auto flex flex-col"
+        className="w-auto flex flex-col shadow-sm"
         onClick={() => dispatch(singleProduct(id))}
       >
         <CardHeader color="blue" className="relative h-96 object-cover">
-          <img src={img} alt="card-image" className="h-full w-full" />
+          <img src={img} alt="card-image" className="h-full w-full rounded-tl-xl rounded-tr-lg" />
         </CardHeader>
-        <CardBody className="text-center">
+        <CardBody className="text-center px-4">
           <Typography variant="h5" className="mb-2">
             {name}
           </Typography>
           <Typography>{text}</Typography>
         </CardBody>
-        <CardFooter divider className="flex items-center justify-between py-3">
+        <CardFooter divider className="flex items-center justify-between p-5">
           <Typography variant="small">{price}$</Typography>
           <Typography variant="small" color="gray" className="flex gap-1">
             {color.map((color, index) => {
