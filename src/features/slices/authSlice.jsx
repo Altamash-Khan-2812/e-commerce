@@ -35,7 +35,7 @@ export const authSlice = createSlice({
         image: "",
         authUser: false,
       };
-      sessionStorage.clear();
+      localStorage.clear();
     },
   },
 });

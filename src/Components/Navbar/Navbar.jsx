@@ -32,7 +32,7 @@ const Navbar = () => {
           <img className="h-28 w-full" src={logo} alt="store" />
         </div>
         <div className="flex flex-row items-center gap-4">
-          <button className=" font-[inter] text-base font-medium tracking-normal leading-none text-center mr-4">
+          <button className=" font-[inter] text-base font-medium tracking-normal leading-none text-center mr-4 cursor-pointer" onClick={() => dispatch(logout())}>
             Logout
           </button>
           <div className="flex flex-row items-center gap-0.5">
@@ -66,12 +66,10 @@ const Navbar = () => {
                 className="mr-2 h-8 w-8 rounded-full"
               ></Avatar>
             )}
-            <div onClick={() => dispatch(logout())}>
-              <Tooltip content="Sign Out" placement="bottom" className="p-1">
-                <p className="font-[inter] text-sm font-medium tracking-normal leading-none">
-                  Hi {name.charAt(0).toUpperCase() + name.slice(1)}
-                </p>
-              </Tooltip>
+            <div>
+              <p className="font-[inter] text-sm font-medium tracking-normal leading-none">
+                Hi {name.charAt(0).toUpperCase() + name.slice(1)}
+              </p>
             </div>
           </div>
         </div>
