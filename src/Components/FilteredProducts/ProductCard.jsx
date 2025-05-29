@@ -20,14 +20,18 @@ const ProductCard = ({ img, id, name, text, price, color }) => {
         className="w-auto flex flex-col shadow-sm"
         onClick={() => dispatch(singleProduct(id))}
       >
-        <CardHeader color="blue" className="relative h-96 object-cover">
-          <img src={img} alt="card-image" className="h-full w-full rounded-tl-xl rounded-tr-lg" />
+        <CardHeader color="blue" className="relative h-96 object-cover mb-4">
+          <img
+            src={img}
+            alt="card-image"
+            className="h-full w-full rounded-tl-xl rounded-tr-lg"
+          />
         </CardHeader>
         <CardBody className="text-center px-4">
           <Typography variant="h5" className="mb-2">
             {name}
           </Typography>
-          <Typography>{text}</Typography>
+          <Typography className="leading-[1.3] text-left">{text}</Typography>
         </CardBody>
         <CardFooter divider className="flex items-center justify-between p-5">
           <Typography variant="small">{price}$</Typography>

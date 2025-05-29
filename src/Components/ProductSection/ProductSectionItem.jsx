@@ -25,59 +25,36 @@ const ProductSectionItem = ({
   const defaultSize = size[0];
 
   return (
-    <div>
-      <Card className="w-96">
-        <CardHeader floated={false} className="h-[80]">
-          <img src={img} alt={name} />
-        </CardHeader>
-        <CardBody className="text-center">
-          <Typography variant="h4" color="blue-gray" className="mb-2">
-            {name}
-          </Typography>
-          <Typography color="gray" className="font-medium" textGradient>
-            {text}
-          </Typography>
-          <div className="flex justify-between items-center pt-4">
-            <Typography color="blue-gray" className="font-medium" textGradient>
-              Size left: {defaultSize}
-            </Typography>
-            <Typography color="gray" className="font-medium" textGradient>
-              Color:{" "}
-              <span
-                className="px-2 rounded-full ml-2"
-                style={{ backgroundColor:  defaultColor  }}
-              ></span>
-            </Typography>
-          </div>
-        </CardBody>
-        <CardFooter className="flex justify-center gap-7 pt-2">
-          <Tooltip context="Add to Cart" placement="bottom">
-            <Button
-              size="lg"
-              color="gray"
-              variant="outlined"
-              ripple={true}
-              onClick={() =>
-                dispatch(
-                  addToCart({
-                    id: id,
-                    img: img,
-                    text: text,
-                    amount: 1,
-                    price: price,
-                    totalPrice: totalPrice,
-                    name: name,
-                    size: defaultSize,
-                    color: defaultColor,
-                  })
-                )
-              }
-            >
-              Add to Cart
-            </Button>
-          </Tooltip>
-        </CardFooter>
-      </Card>
+    <div className="w-96 border-1 border-gray-200 shadow-md rounded-lg overflow-hidden relative">
+      <div className="h-[350px] mb-3">
+        <img
+          src={img}
+          alt={name}
+          className="w-full h-full object-cover shadow-md"
+        />
+      </div>
+      <div className="px-3">
+        <p className="text-xl md:text-3xl leading-none font-normal text-gray-900 mb-4">
+          {name}
+        </p>
+        <p className="leading-[1.3] tracking-normal text-gray-950 mb-3 text-lg">
+          {text}
+        </p>
+        <p className="text-md mb-3">Size left : {defaultSize}</p>
+        <div className="flex items-center gap-2 mb-5">
+          <p className="text-md">Color : </p>
+          <span
+            className="block h-3 w-3 rounded-full mt-1"
+            style={{ backgroundColor: defaultColor }}
+          ></span>
+        </div>
+        <button className="w-full bg-green-600 hover:bg-green-700 text-lg cursor-pointer text-white font-medium px-4 py-2 mb-2 rounded-sm">
+          Add to Cart
+        </button>
+      </div>
+      <span className="font-medium bg-red-600 text-white px-15 shadow-md uppercase absolute top-5 -right-10 rotate-45">
+        sale
+      </span>
     </div>
   );
 };

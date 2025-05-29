@@ -45,19 +45,26 @@ const cartSlice = createSlice({
     removeFromCart(state, action) {
       const productId = action.payload;
       try {
-        const exist = state.cart.find((item) => {
-          return item.id === productId.id;
-        });
+        const exist = state.cart.find(
+          (item) =>
+            item.id === productId.id &&
+            item.size === productId.size &&
+            item.color === productId.color
+        );
 
         if (exist.amount === 1) {
-          const filteredArr = state.cart.filter((item) => {
-            return item.id !== productId.id;
-          })
-          state.totalAmount--
-          state.cart = filteredArr;
-        } else{
+          state.cart = state.cart.filter((item) => {
+            return !(
+              item.id === productId.id &&
+              item.size === productId.size &&
+              item.color === productId.color
+            );
+          });
+          state.totalAmount--;
+        } else {
           exist.amount--;
           exist.totalPrice -= productId.price;
+          state.totalAmount--;
         }
         state.totalPrice -= productId.price;
       } catch (err) {

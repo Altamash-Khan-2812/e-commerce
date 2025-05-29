@@ -35,10 +35,10 @@ const Login = () => {
         setPasswordError("Password must be less than 10 char");
         return;
       } else if (!/[0-9]/.test(values.password)) {
-        setPasswordError("Password should contain one num");
+        setPasswordError("Password should have one number");
         return;
       } else if (!/[!@#$%^&*]/.test(values.password)) {
-        setPasswordError("Password must have  one special char (!@#$%^&*)");
+        setPasswordError("Password must have a special char (!@#$%^&*)");
         return;
       }
     }
@@ -50,7 +50,7 @@ const Login = () => {
   return (
     <div className="flex items-center justify-center p-4">
       <form
-        className="shadow-lg p-5 flex flex-col gap-5 w-full max-w-md"
+        className="shadow-xl p-5 flex flex-col gap-5 w-full max-w-md"
         aria-label="Login Form"
         onSubmit={handleFormSubmit}
       >
